@@ -1,13 +1,10 @@
-const Task = require('../models/Task')
+const Task = require('../models/Task');
+const asyncContainer = require('../middleware/async');
 
-const getAllTasks = async (req, res) => {
-    try {
+const getAllTasks = asyncContainer(async (req, res) => {
         const tasks = await Task.find({}) // to get all the object
-        res.status(200).json({ tasks /**task:task */});   
-    } catch (error) {
-        res.status(500).json({msg: error});
-    }
-};
+        res.status(200).json({ tasks /**task:task */});
+});
 
 const createTask = async (req, res) => {
     try {
