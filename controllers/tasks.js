@@ -12,8 +12,7 @@ const createTask = asyncContainer(async (req, res) => {
 });
 
 
-const getTask = async (req, res) => {
-    try {
+const getTask = asyncContainer(async (req, res) => {
         const { id:taskID } = req.params;
         const task = await Task.findOne({ _id:taskID });
         if(!task){
@@ -21,11 +20,7 @@ const getTask = async (req, res) => {
         }
 
         res.status(200).json({ task });
-    } catch (error) {
-        res.status(500).json({msg: error});
-        
-    }
-};
+});
 
 const updateTask = async (req, res) => {
     try {
