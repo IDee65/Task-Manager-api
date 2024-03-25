@@ -6,14 +6,10 @@ const getAllTasks = asyncContainer(async (req, res) => {
         res.status(200).json({ tasks /**task:task */});
 });
 
-const createTask = async (req, res) => {
-    try {
+const createTask = asyncContainer(async (req, res) => {
         const task = await Task.create(req.body)
         res.status(201).json({ task });   
-    } catch (error) {
-        res.status(500).json({msg: error});
-    }
-};
+});
 
 
 const getTask = async (req, res) => {
