@@ -22,8 +22,7 @@ const getTask = asyncContainer(async (req, res) => {
         res.status(200).json({ task });
 });
 
-const updateTask = async (req, res) => {
-    try {
+const updateTask = asyncContainer(async (req, res) => {
         const {id:taskID} = req.params;
 
         const task = await Task.findByIdAndUpdate({ _id:taskID}, req.body, {
@@ -36,10 +35,7 @@ const updateTask = async (req, res) => {
         }
 
         res.status(200).json({ task });
-    } catch (error) {
-        res.status(500).json({msg: error});
-    }
-};
+});
 
 const deleteTask = asyncContainer( async (req, res) => {
         const {id:taskID} = req.params;
