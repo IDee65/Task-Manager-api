@@ -41,8 +41,7 @@ const updateTask = async (req, res) => {
     }
 };
 
-const deleteTask = async (req, res) => {
-    try {
+const deleteTask = asyncContainer( async (req, res) => {
         const {id:taskID} = req.params;
         const task = await Task.findOneAndDelete({_id:taskID});
         if(!task){
@@ -50,11 +49,7 @@ const deleteTask = async (req, res) => {
         }
 
         res.status(200).json(task);
-    } catch (error) {
-        res.status(500).json({msg: error});
-    }
-
-};
+});
 
 
 module.exports = {
