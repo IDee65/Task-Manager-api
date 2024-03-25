@@ -4,6 +4,7 @@ const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
 require('dotenv').config();
 const notFound = require('./middleware/notFound');
+const errorHandlerMw = require('./middleware/errorHandler');
 
 
 //middleware
@@ -19,6 +20,7 @@ app.use('/api/v1/tasks', tasks);
 //app.patch('/api/v1/tasks/:id')            -update tasks
 //app.delete('/api/v1/tasks/:id')           -get all tasks
 app.use(notFound);
+app.use(errorHandlerMw);
 
 const PORT = process.env.PORT || 3000;
 
