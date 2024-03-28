@@ -1,5 +1,9 @@
+#Webstack - Portfolio Project
 
-
+#How to set up project
+-install the dependencies
+-set up .env file in the project
+-MONGO_URI =" Put your connectionString from MongoDB "
 
 
 #Api Documentation
